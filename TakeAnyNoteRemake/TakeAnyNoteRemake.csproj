@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Icons\close.png" />
+    <None Remove="Assets\Icons\delete.png" />
+    <None Remove="Assets\Icons\edit.png" />
+    <None Remove="Assets\Icons\new.png" />
+    <None Remove="Assets\Icons\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\close.png" />
+    <Resource Include="Assets\Icons\delete.png" />
+    <Resource Include="Assets\Icons\edit.png" />
+    <Resource Include="Assets\Icons\new.png" />
+    <Resource Include="Assets\Icons\search.png" />
+  </ItemGroup>
+
+</Project>

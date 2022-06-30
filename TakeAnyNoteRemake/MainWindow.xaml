@@ -1,0 +1,137 @@
+﻿<Window x:Class="TakeAnyNoteRemake.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TakeAnyNoteRemake"
+        mc:Ignorable="d"
+        Width="400"
+        Height="700"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Loaded="Window_Loaded">
+
+    <Grid Background="Transparent"
+          x:Name="body">
+        <Border Background="#273A69" CornerRadius="30"/>
+
+        <Button Width="25"
+                Height="25"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0,25,25,0"
+                Background="Transparent"
+                Foreground="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                x:Name="btnClose"
+                Click="btnClose_Click"
+                Style="{DynamicResource btnStyle}">
+            <Image Source="/Assets/Icons/close.png" Stretch="Uniform"/>
+        </Button>
+
+        <TextBlock Text="Take a note" FontSize="34" Foreground="#6bdfdb" VerticalAlignment="Top"
+                   HorizontalAlignment="Left" Margin="55,15,0,0" FontFamily="Cascadia Mono Light"/>
+        
+        <Button Width="30"
+                Height="30"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                Background="Transparent"
+                Margin="20"
+                x:Name="btnNew"
+                Click="btnNew_Click"
+                Style="{DynamicResource btnStyle}">
+            <Image Source="Assets/Icons/new.png"/>
+        </Button>
+
+        <Grid Background="Transparent"
+              Width="350"
+              Height="140"
+              VerticalAlignment="Top"
+              Margin="0,80,0,0">
+            
+            <Border CornerRadius="20" Background="#1B2A52"/>
+            <Image Source="/Assets/Icons/search.png" Width="25" Height="25"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,27.5,0,0"/>
+
+            <TextBox Width="265"
+                     Height="25"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     CaretBrush="#F3F6F8"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="75,27.5,0,0"
+                     FontSize="20"
+                     Foreground="DarkCyan"
+                     Text="Search for a note..."
+                     FontFamily="Times New Roman"
+                     MaxLength="32"
+                     x:Name="tbxSearch"
+                     GotFocus="tbxSearch_GotFocus"
+                     LostFocus="tbxSearch_LostFocus">
+            </TextBox>
+
+            <Button VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Width="300"
+                    Background="#6bdfdb"
+                    Height="50"
+                    Margin="0,0,0,20"
+                    Content="Search"
+                    Foreground="#1B2A52"
+                    FontSize="22"
+                    x:Name="btnSearch"
+                    Click="btnSearch_Click"
+                    Style="{DynamicResource btnStyle}">
+            </Button>
+        </Grid>
+
+        <Grid Background="Transparent"
+              VerticalAlignment="Bottom"
+              Height="450"
+              x:Name="myGrid">
+
+            <Border CornerRadius="20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="#2278fb" Offset="0" />
+                        <GradientStop Color="#6bdfdb" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <Grid Background="Transparent"
+                  Width="370">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <StackPanel x:Name="notesContainer" Background="Transparent" Orientation="Vertical"/>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Grid.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetProperty="Height" Storyboard.TargetName="myGrid">
+                            <DoubleAnimation Duration="0:0:0.25" To="625"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                
+                <EventTrigger RoutedEvent="Grid.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetProperty="Height" Storyboard.TargetName="myGrid">
+                            <DoubleAnimation Duration="0:0:0.25" To="450"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+
+    </Grid>
+</Window>
